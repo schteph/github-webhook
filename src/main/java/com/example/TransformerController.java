@@ -27,7 +27,6 @@ import com.toomuchcoding.jsonassert.JsonPath;
 @RestController
 public class TransformerController {
 
-	@Autowired Source source;
 	static final List<Pojo> DATABASE = Collections.synchronizedList(new ArrayList<>());
 
 	@PostConstruct
@@ -74,8 +73,6 @@ public class TransformerController {
 			action = "updated";
 		}
 		Pojo pojo = new Pojo(username, repo, type, action);
-		this.source.output().send(MessageBuilder
-				.createMessage(pojo, new MessageHeaders(headers)));
 		DATABASE.add(pojo);
 		return pojo;
 	}

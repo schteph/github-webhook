@@ -7,20 +7,16 @@ import java.io.InputStreamReader;
 
 import org.junit.Before;
 import org.junit.Test;
-import org.springframework.cloud.stream.messaging.Source;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
-import org.springframework.integration.channel.QueueChannel;
 import org.springframework.util.FileCopyUtils;
 
 public class TransformationTests {
 
 	private TransformerController transformer = new TransformerController();
-	private Source source = () -> new QueueChannel();
 
 	@Before
 	public void init() {
-		this.transformer.source = this.source;
 	}
 
 	@Test
