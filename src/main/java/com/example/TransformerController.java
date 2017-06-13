@@ -2,13 +2,10 @@ package com.example;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import javax.annotation.PostConstruct;
 
-import org.springframework.messaging.MessageHeaders;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -48,9 +45,6 @@ public class TransformerController {
 					JsonPath.builder().field("organization").field("login").jsonPath());
 		}
 		String type;
-		Map<String, Object> headers = new HashMap<>();
-		headers.put("version", "v2");
-		headers.put(MessageHeaders.CONTENT_TYPE, "application/json");
 		try {
 			System.err.println(JsonPath.builder().field("issue").jsonPath());
 			type = parsedJson.read("$.issue") != null ? "issue" : "unknown";
